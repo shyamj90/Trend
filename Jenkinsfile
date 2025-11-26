@@ -32,5 +32,15 @@ pipeline{
             }
 
         }
+        stage("Deploy to EKS"){
+            steps{
+                script{
+                    sh """
+                        aws eks update-kubeconfig --region us-east-2 --name ssj-eks1
+                        kubectl apply -f deployment.yaml
+                    """
+                }
+            }
+        }
     }
 }
