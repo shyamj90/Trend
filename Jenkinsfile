@@ -36,8 +36,9 @@ pipeline{
             steps{
                 script{
                     sh """
-                        aws eks update-kubeconfig --region us-east-2 --name ssj-eks1
+                        aws eks update-kubeconfig --region us-east-2 --name ssj-p2
                         kubectl apply -f deployment.yaml
+                        kubectl apply -f loadBalancerSvc.yaml
                     """
                 }
             }
